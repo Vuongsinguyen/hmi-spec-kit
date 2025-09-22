@@ -58,6 +58,16 @@ SDD transforms requirement changes from obstacles into normal workflow. When spe
 
 **Branching for Exploration**: Generate multiple implementation approaches from the same specification to explore different optimization targets—performance, maintainability, user experience, cost.
 
+## HMI UI Layout Principles
+
+When designing HMI interfaces, follow these layout rules:
+
+- **Important actionable elements** (buttons, controls, critical actions) should always be prioritized in the top-right corner of the screen for quick access and visibility.
+- **Elements for viewing, monitoring, or status display** should be centered on the screen to maximize focus and clarity.
+- **Data views** (tables, logs, analytics) should be placed on the right side of the screen for easy scanning and reference.
+
+These rules ensure that user attention is directed appropriately, actions are easily accessible, and monitoring/data is organized for optimal usability in industrial and operational environments.
+
 ## Implementation Approaches
 
 Today, practicing SDD requires assembling existing tools and maintaining discipline throughout the process. The methodology can be practiced with:

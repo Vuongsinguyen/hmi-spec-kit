@@ -1,6 +1,8 @@
 /* Settings Page Specific Styles */
 .settings-page {
-  background: var(--color-background);
+  background: transparent;
+  height: auto;
+  min-height: auto;
 }
 
 .settings-grid {
