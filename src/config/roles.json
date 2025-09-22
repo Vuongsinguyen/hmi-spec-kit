@@ -1,0 +1,29 @@
+{
+  "roles": [
+    {
+      "name": "Admin",
+      "permissions": [
+        "subpage:access", "subpage:edit", "subpage:view",
+        "widget:access", "widget:edit", "widget:view"
+      ]
+    },
+    {
+      "name": "Operator",
+      "permissions": [
+        "subpage:access", "subpage:view",
+        "widget:access", "widget:view"
+      ]
+    },
+    {
+      "name": "Viewer",
+      "permissions": [
+        "subpage:access", "subpage:view",
+        "widget:view"
+      ]
+    }
+  ],
+  "permissions": [
+    "subpage:access", "subpage:edit", "subpage:view",
+    "widget:access", "widget:edit", "widget:view"
+  ]
+}

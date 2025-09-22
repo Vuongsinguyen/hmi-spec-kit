@@ -1,3 +1,36 @@
+# Dynamic Roles & Permissions
+
+## Model
+- Roles and permissions are defined in a config file (e.g., `src/config/roles.json`).
+- Each role has a set of permissions (e.g., access/edit/view for subpages and widgets).
+- Permissions are checked dynamically in both frontend and backend.
+
+## Rules
+- On login, assign user roles dynamically.
+- Check permissions before rendering or enabling actions (edit/view/access) for subpages and widgets.
+- Restrict API calls and UI elements based on user permissions.
+- Permissions can be updated in the config file without code changes.
+
+## Example Permissions
+- `subpage:access`, `subpage:edit`, `subpage:view`
+- `widget:access`, `widget:edit`, `widget:view`
+
+## Example Usage
+```jsx
+function canEditSubpage(user) {
+   return user.permissions.includes('subpage:edit');
+}
+
+function Subpage({ user }) {
+   if (!user.permissions.includes('subpage:access')) return <div>No Access</div>;
+   return (
+      <div>
+         {canEditSubpage(user) ? <button>Edit</button> : <span>View Only</span>}
+         {/* ...subpage content... */}
+      </div>
+   );
+}
+```
 # Documentation Standards
 
 ---
