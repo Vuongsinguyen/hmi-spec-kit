@@ -4,6 +4,7 @@ import './DataRunning.css';
 const DataRunning = () => {
   const [cards, setCards] = useState([]);
   const [isVisible, setIsVisible] = useState(true);
+  const [pinnedCards, setPinnedCards] = useState([]);
 
   // Sample machine operations data
   const machineOperations = [
@@ -50,6 +51,27 @@ const DataRunning = () => {
     setIsVisible(!isVisible);
   };
 
+  const togglePinCard = (cardId) => {
+    console.log('Toggling pin for card:', cardId);
+    setPinnedCards(prev => {
+      const isPinned = prev.some(card => card.id === cardId);
+      if (isPinned) {
+        // Unpin: remove from pinned cards only
+        console.log('Unpinning card');
+        return prev.filter(card => card.id !== cardId);
+      } else {
+        // Pin: add to pinned cards (keep in main list)
+        const cardToPin = cards.find(card => card.id === cardId);
+        console.log('Card to pin:', cardToPin);
+        if (cardToPin) {
+          console.log('Pinning card');
+          return [...prev, cardToPin];
+        }
+        return prev;
+      }
+    });
+  };
+
   useEffect(() => {
     // Start with empty cards array
     setCards([]);
@@ -68,51 +90,121 @@ const DataRunning = () => {
   }, []);
 
   return (
-    <div className={`data-running-widget ${!isVisible ? 'hidden' : ''}`}>
-      <button className="toggle-button" onClick={toggleVisibility}>
-        {isVisible ? '◀' : '▶'}
-      </button>
-      <div className="data-running-header">
-        <h3>Machine Operations</h3>
-        <div className="status-indicator">
-          <span className="status-dot active"></span>
-          Live Data
+    <div className="data-running-container">
+      <div className={`data-running-widget ${!isVisible ? 'hidden' : ''}`}>
+        <button className="toggle-button" onClick={toggleVisibility}>
+          {isVisible ? '◀' : '▶'}
+        </button>
+        <div className="data-running-header">
+          <h3>Machine Operations</h3>
+          <div className="status-indicator">
+            <span className="status-dot active"></span>
+            Live Data
+          </div>
+        </div>
+        <div className="data-running-content">
+          {cards.slice().reverse().map((card, index) => {
+            const isPinned = pinnedCards.some(pinnedCard => pinnedCard.id === card.id);
+            return (
+              <div
+                key={card.id}
+                className={`operation-card ${isPinned ? 'pinned' : ''}`}
+                style={{
+                  animationDelay: `${index * 0.1}s`,
+                  borderLeftColor: card.color
+                }}
+              >
+                <div className="card-header">
+                  <span className="unit-name">{card.unit}</span>
+                  <div className="card-header-right">
+                    <span className="timestamp">{card.timestamp}</span>
+                    <button
+                      className="pin-button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        togglePinCard(card.id);
+                      }}
+                      title={isPinned ? "Unpin this card" : "Pin this card"}
+                    >
+                      {isPinned ? '📍' : '📌'}
+                    </button>
+                  </div>
+                </div>
+                <div className="card-content">
+                  <div className="operation-info">
+                    <span className="action">{card.action}</span>
+                    <span className="source">from {card.source}</span>
+                  </div>
+                  <div className="position-info">
+                    Position: <strong>{card.position}</strong>
+                  </div>
+                </div>
+                <div className="card-status">
+                  <span
+                    className="status-badge"
+                    style={{ backgroundColor: card.color }}
+                  >
+                    {card.status}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-      <div className="data-running-content">
-        {cards.slice().reverse().map((card, index) => (
-          <div
-            key={card.id}
-            className="operation-card"
-            style={{
-              animationDelay: `${index * 0.1}s`,
-              borderLeftColor: card.color
-            }}
-          >
-            <div className="card-header">
-              <span className="unit-name">{card.unit}</span>
-              <span className="timestamp">{card.timestamp}</span>
-            </div>
-            <div className="card-content">
-              <div className="operation-info">
-                <span className="action">{card.action}</span>
-                <span className="source">from {card.source}</span>
-              </div>
-              <div className="position-info">
-                Position: <strong>{card.position}</strong>
-              </div>
-            </div>
-            <div className="card-status">
-              <span
-                className="status-badge"
-                style={{ backgroundColor: card.color }}
-              >
-                {card.status}
-              </span>
-            </div>
+
+      {/* Pinned Cards Sidebar */}
+      {pinnedCards.length > 0 && (
+        <div className="pinned-cards-sidebar">
+          <div className="pinned-cards-header">
+            <h4>Pinned Cards ({pinnedCards.length})</h4>
           </div>
-        ))}
-      </div>
+          <div className="pinned-cards-content">
+            {pinnedCards.map((card) => (
+              <div
+                key={`pinned-${card.id}`}
+                className="operation-card pinned-card"
+                style={{
+                  borderLeftColor: card.color
+                }}
+              >
+                <div className="card-header">
+                  <span className="unit-name">{card.unit}</span>
+                  <button
+                    className="unpin-button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setPinnedCards(prev => prev.filter(c => c.id !== card.id));
+                    }}
+                    title="Unpin this card"
+                  >
+                    ❌
+                  </button>
+                </div>
+                <div className="card-content">
+                  <div className="operation-info">
+                    <span className="action">{card.action}</span>
+                    <span className="source">from {card.source}</span>
+                  </div>
+                  <div className="position-info">
+                    Position: <strong>{card.position}</strong>
+                  </div>
+                </div>
+                <div className="card-status">
+                  <span
+                    className="status-badge"
+                    style={{ backgroundColor: card.color }}
+                  >
+                    {card.status}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
