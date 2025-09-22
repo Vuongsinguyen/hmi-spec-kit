@@ -51,20 +51,16 @@ const DataRunning = () => {
   };
 
   useEffect(() => {
-    // Generate initial cards
-    const initialCards = [];
-    for (let i = 0; i < 5; i++) {
-      initialCards.push(generateNewCard());
-    }
-    setCards(initialCards);
+    // Start with empty cards array
+    setCards([]);
 
     // Generate new card every 2-4 seconds
     const interval = setInterval(() => {
       const newCard = generateNewCard();
       setCards(prevCards => {
-        // Keep only last 10 cards to prevent overflow
-        const updatedCards = [newCard, ...prevCards].slice(0, 10);
-        return updatedCards;
+        // Add new card to the end, then reverse for display
+        const newCards = [...prevCards, newCard];
+        return newCards.slice(-10); // Keep only last 10 cards
       });
     }, 2000 + Math.random() * 2000); // 2-4 seconds
 
@@ -84,12 +80,12 @@ const DataRunning = () => {
         </div>
       </div>
       <div className="data-running-content">
-        {cards.map((card, index) => (
+        {cards.slice().reverse().map((card, index) => (
           <div
             key={card.id}
             className="operation-card"
             style={{
-              animationDelay: `${index * 0.2}s`,
+              animationDelay: `${index * 0.1}s`,
               borderLeftColor: card.color
             }}
           >
