@@ -1,0 +1,18 @@
+{
+  "name": "hmi-spec-kit",
+  "version": "1.0.0",
+  "description": "HMI Specification Kit - A comprehensive toolkit for Human-Machine Interface development",
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "preview": "cd frontend && npm run preview",
+    "install": "cd frontend && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vuongsinguyen/hmi-spec-kit.git"
+  },
+  "keywords": ["hmi", "react", "three.js", "vite", "specification"],
+  "author": "Vuongsinguyen",
+  "license": "MIT"
+}

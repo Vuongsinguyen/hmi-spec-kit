@@ -92,8 +92,17 @@ const themes = {
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [currentTheme, setCurrentTheme] = useState('standard');
+  // Đọc theme từ localStorage, nếu có
+  const getInitialTheme = () => {
+    const saved = window.localStorage.getItem('hmi-theme');
+    return saved && themes[saved] ? saved : 'standard';
+  };
+  const [currentTheme, setCurrentTheme] = useState(getInitialTheme());
 
+  // Khi đổi theme, lưu vào localStorage
+  useEffect(() => {
+    window.localStorage.setItem('hmi-theme', currentTheme);
+  }, [currentTheme]);
   useEffect(() => {
     // Apply theme to CSS variables
     const theme = themes[currentTheme];
