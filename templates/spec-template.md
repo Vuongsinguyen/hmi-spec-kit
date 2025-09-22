@@ -104,6 +104,29 @@ When creating this spec from a user prompt:
    - Integration requirements
    - Security/compliance needs
 
+## Use Cases *(optional, for BA management)*
+
+### Use Case 1: [Title]
+- **Actor:** [Who performs the action]
+- **Preconditions:** [What must be true before]
+- **Main Flow:**
+  1. [Step 1]
+  2. [Step 2]
+- **Alternative Flows:** [Variations]
+- **Postconditions:** [Outcome]
+- **Business Rules:** [Constraints]
+
+### Use Case 2: [Title]
+...
+
+## User Stories *(optional, for BA management)*
+
+### User Story 1
+As a [user type], I want [goal] so that [benefit].
+
+### User Story 2
+...
+
 ---
 
 ## User Scenarios & Testing *(mandatory)*

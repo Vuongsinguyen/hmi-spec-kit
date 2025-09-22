@@ -1,0 +1,78 @@
+.btn {
+  padding: 10px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--font-family);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px var(--color-shadow);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  border-color: var(--color-secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px var(--color-shadow);
+}
+
+.btn-icon {
+  margin-right: 8px;
+}
+
+.btn-disabled {
+  background-color: var(--color-light);
+  color: var(--color-textSecondary);
+  border-color: var(--color-border);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* HMI Future theme - Glass effect */
+:root:has([data-theme="hmiFuture"]) .btn-primary,
+:root:has([data-theme="hmiFuture"]) .btn-secondary {
+  background: var(--color-primary);
+  backdrop-filter: var(--backdrop-filter);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-text);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+:root:has([data-theme="hmiFuture"]) .btn-primary:hover,
+:root:has([data-theme="hmiFuture"]) .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* HMI Classic theme - No border radius */
+:root:has([data-theme="hmiClassic"]) .btn {
+  border-radius: 0;
+}

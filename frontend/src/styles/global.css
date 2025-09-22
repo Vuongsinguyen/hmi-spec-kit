@@ -1,0 +1,61 @@
+/* Global CSS Variables for Theme System */
+:root {
+  /* Default theme variables (Standard theme) */
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+  --color-light: #f8f9fa;
+  --color-dark: #343a40;
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-text: #212529;
+  --color-textSecondary: #6c757d;
+  --color-border: #dee2e6;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+
+  --border-radius: 4px;
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --backdrop-filter: blur(20px);
+  --glass-effect: false;
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* HMI Future theme body styling */
+[data-theme="hmiFuture"] body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+}
+
+/* HMI Future glass effect */
+[data-theme="hmiFuture"] .glass-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* HMI Classic theme - no border radius globally */
+[data-theme="hmiClassic"] * {
+  border-radius: 0 !important;
+}
+
+[data-theme="hmiClassic"] {
+  --border-radius: 0px;
+}

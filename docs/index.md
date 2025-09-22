@@ -10,9 +10,15 @@ Spec-Driven Development **flips the script** on traditional software development
 
 ## Getting Started
 
-- [Installation Guide](installation.md)
-- [Quick Start Guide](quickstart.md)
-- [Local Development](local-development.md)
+# Documentation Index
+
+- [Components](components/)
+- [Widgets](widgets/)
+- [Subpages](subpages/)
+- [CEM](cem/)
+- [Standards](standards/)
+- [Use Cases](use-cases.md)
+- [User Stories](user-stories.md)
 
 ## Core Philosophy
 

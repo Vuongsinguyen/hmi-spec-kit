@@ -1,0 +1,92 @@
+.control-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 2rem;
+  box-shadow: 0 2px 4px var(--color-shadow);
+  z-index: 1000;
+  font-family: var(--font-family);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control-title {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.control-grid {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.control-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control-item label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.theme-info {
+  margin-left: 2rem;
+  padding-left: 2rem;
+  border-left: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.theme-info small {
+  color: var(--color-textSecondary);
+  font-size: 0.8rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .control-panel {
+    padding: 0.5rem 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .control-grid {
+    gap: 1rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .theme-info {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    text-align: center;
+  }
+}
+
+/* HMI Future theme enhancements */
+[data-theme="hmiFuture"] .control-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* HMI Classic theme adjustments */
+[data-theme="hmiClassic"] .control-panel {
+  border-radius: 0;
+  font-family: "Courier New", monospace;
+}
