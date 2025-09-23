@@ -4,6 +4,7 @@ import RealTimeMonitoring from '../components/RealTimeMonitoring';
 import HamburgerMenu from '../components/HamburgerMenu';
 import SettingsDialog from '../components/SettingsDialog';
 import DataRunning from '../components/DataRunning';
+import { Button } from '../components/Button';
 import '../styles/subpage.css';
 import '../styles/HamburgerMenuDialog.css';
 import '../components/DataRunning.css';
@@ -31,6 +32,22 @@ const TopPage = () => {
       </div>
       <DataRunning />
       <HamburgerMenu onSettingsClick={handleSettingsClick} />
+      
+      {/* Floating Action Button */}
+      <div style={{
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        zIndex: 1000
+      }}>
+        <Button 
+          variant="action" 
+          label="Quick Action" 
+          icon="⚡"
+          onClick={() => console.log('Quick action clicked!')}
+        />
+      </div>
+      
       {showSettingsDialog && (
         <div className="settings-dialog-overlay" onClick={handleCloseDialog}>
           <div className="settings-dialog" onClick={e => e.stopPropagation()}>

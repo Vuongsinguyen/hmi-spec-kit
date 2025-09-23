@@ -1,73 +1,171 @@
+/* Base Button Styles */
 .btn {
-  padding: 10px 20px;
-  border: 1px solid var(--color-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family);
+  font-weight: 500;
+  border: 1px solid transparent;
   border-radius: var(--border-radius);
   cursor: pointer;
-  font-size: 16px;
-  font-family: var(--font-family);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
 }
 
-.btn-primary {
+/* Size Variants */
+.btn-small {
+  padding: 6px 12px;
+  font-size: 14px;
+  min-height: 32px;
+}
+
+.btn-medium {
+  padding: 10px 20px;
+  font-size: 16px;
+  min-height: 40px;
+}
+
+.btn-large {
+  padding: 14px 28px;
+  font-size: 18px;
+  min-height: 48px;
+}
+
+/* Button Variants */
+
+/* Dialog - Subtle buttons for dialogs/modals */
+.btn-dialog {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn-dialog:hover:not(.btn-disabled) {
+  background-color: var(--color-background);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px var(--color-shadow);
+}
+
+/* Command - Standard functional buttons */
+.btn-command {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn-command:hover:not(.btn-disabled) {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px var(--color-shadow);
+}
+
+/* Action - Primary call-to-action buttons */
+.btn-action {
   background-color: var(--color-primary);
   color: white;
   border-color: var(--color-primary);
+  font-weight: 600;
 }
 
-.btn-primary:hover {
+.btn-action:hover:not(.btn-disabled) {
   background-color: var(--color-dark);
   border-color: var(--color-dark);
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px var(--color-shadow);
+  box-shadow: 0 6px 12px var(--color-shadow);
 }
 
-.btn-secondary {
-  background-color: var(--color-secondary);
-  color: var(--color-text);
-  border-color: var(--color-secondary);
-}
-
-.btn-secondary:hover {
-  background-color: var(--color-dark);
-  border-color: var(--color-dark);
-  color: white;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px var(--color-shadow);
-}
-
+/* Icon Styles */
 .btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 8px;
+  font-size: 1.1em;
 }
 
+/* Disabled State */
 .btn-disabled {
   background-color: var(--color-light);
   color: var(--color-textSecondary);
   border-color: var(--color-border);
   cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .btn-disabled:hover {
-  transform: none;
-  box-shadow: none;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
+/* Full Width */
+.btn-full-width {
+  width: 100%;
+}
+
+/* Focus States for Accessibility */
+.btn:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Loading State (can be added with data-loading attribute) */
+.btn[data-loading] {
+  pointer-events: none;
+  position: relative;
+}
+
+.btn[data-loading]:after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin: auto;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Theme-specific overrides */
+
 /* HMI Future theme - Glass effect */
-:root:has([data-theme="hmiFuture"]) .btn-primary,
-:root:has([data-theme="hmiFuture"]) .btn-secondary {
-  background: var(--color-primary);
-  backdrop-filter: var(--backdrop-filter);
+:root:has([data-theme="hmiFuture"]) .btn-dialog {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-text);
+}
+
+:root:has([data-theme="hmiFuture"]) .btn-command {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+:root:has([data-theme="hmiFuture"]) .btn-action {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-:root:has([data-theme="hmiFuture"]) .btn-primary:hover,
-:root:has([data-theme="hmiFuture"]) .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
+:root:has([data-theme="hmiFuture"]) .btn-dialog:hover:not(.btn-disabled),
+:root:has([data-theme="hmiFuture"]) .btn-command:hover:not(.btn-disabled),
+:root:has([data-theme="hmiFuture"]) .btn-action:hover:not(.btn-disabled) {
+  background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
@@ -75,4 +173,15 @@
 /* HMI Classic theme - No border radius */
 :root:has([data-theme="hmiClassic"]) .btn {
   border-radius: 0;
+}
+
+/* Dark Night theme - Enhanced contrast */
+:root:has([data-theme="darkNight"]) .btn-action {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+:root:has([data-theme="darkNight"]) .btn-action:hover:not(.btn-disabled) {
+  background-color: #2563eb;
+  border-color: #2563eb;
 }
