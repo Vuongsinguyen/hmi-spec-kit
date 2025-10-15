@@ -1,0 +1,289 @@
+/* Gauges Demo Page Styling */
+
+.gauges-demo {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: var(--color-background);
+  min-height: 100vh;
+}
+
+.demo-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.demo-header h1 {
+  margin: 0 0 0.5rem 0;
+  color: var(--color-text);
+  font-size: 2.5rem;
+  font-family: var(--font-family);
+}
+
+.demo-header p {
+  margin: 0;
+  color: var(--color-textSecondary);
+  font-size: 1.1rem;
+}
+
+.demo-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.demo-section h2 {
+  margin: 0 0 2rem 0;
+  color: var(--color-text);
+  font-size: 1.8rem;
+  font-family: var(--font-family);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+/* Gauges grid */
+.gauges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Pressure compact grid - fixed 200x120 cells */
+.pressure-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: start;
+}
+
+/* Pressure mini grid - fixed 160x80 cells */
+.pressure-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 160px);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: start;
+}
+
+/* Pressure micro grid - fixed 120x60 cells */
+.pressure-micro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 120px);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  justify-content: start;
+}
+
+/* Size demo grid */
+
+.gauges-grid.size-demo {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+/* Compact grid for comparison */
+.compact-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.gauge-comparison {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gauge-comparison h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-textSecondary);
+  font-weight: 500;
+}
+
+/* Mini dashboard grid */
+.mini-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: var(--border-radius);
+}
+
+/* Linear gauges container */
+.linear-gauges-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.linear-gauges-container .gauge-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Dashboard Layout */
+.dashboard-section {
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
+  border: 2px solid var(--color-primary);
+}
+
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* Info Panel */
+.demo-info {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.demo-info h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.demo-info ul {
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.demo-info li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.demo-info p {
+  margin: 1rem 0 0 0;
+  font-size: 1rem;
+  opacity: 0.95;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .gauges-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .dashboard-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gauges-demo {
+    padding: 1rem;
+  }
+
+  .demo-header {
+    padding: 1.5rem;
+  }
+
+  .demo-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .demo-header p {
+    font-size: 1rem;
+  }
+
+  .demo-section {
+    padding: 1.5rem;
+  }
+
+  .demo-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .gauges-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .dashboard-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .demo-info {
+    padding: 1.5rem;
+  }
+
+  .mini-dashboard {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .linear-gauges-container .gauge-container {
+    max-width: 100%;
+  }
+}
+
+/* Theme-specific styles */
+[data-theme="darkNight"] .demo-header,
+[data-theme="darkNight"] .demo-section {
+  background: #1e1e1e;
+  border-color: #495057;
+}
+
+[data-theme="hmiFuture"] .demo-header,
+[data-theme="hmiFuture"] .demo-section {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="hmiFuture"] .dashboard-section {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="hmiClassic"] .demo-header,
+[data-theme="hmiClassic"] .demo-section {
+  border-radius: 0;
+  border-width: 2px;
+}
+
+/* Print styles */
+@media print {
+  .gauges-demo {
+    padding: 0;
+  }
+
+  .demo-section {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .demo-info {
+    display: none;
+  }
+}

@@ -1,0 +1,439 @@
+/* Gauges Widget Styling */
+
+.gauge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1rem;
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px var(--color-shadow);
+  font-family: var(--font-family);
+  transition: all 0.3s ease;
+}
+
+/* Compact type adjustments */
+.gauge-container.compact {
+  padding: 0.5rem;
+}
+
+.gauge-container.compact .gauge-value {
+  top: 50%;
+}
+
+.gauge-container.compact .value-number {
+  font-size: 1.3rem;
+}
+
+.gauge-container.compact .value-unit {
+  font-size: 0.7rem;
+}
+
+/* Mini type adjustments */
+.gauge-container.mini {
+  padding: 0.5rem;
+  min-height: auto;
+}
+
+.gauge-container.mini .gauge-value {
+  position: relative;
+  transform: none;
+  margin-top: 0.25rem;
+}
+
+.gauge-container.mini .value-number {
+  font-size: 0.9rem;
+}
+
+.gauge-container.mini .value-unit {
+  font-size: 0.6rem;
+}
+
+.gauge-container.mini .gauge-alert {
+  width: 16px;
+  height: 16px;
+  font-size: 0.7rem;
+  top: 0.25rem;
+  right: 0.25rem;
+}
+
+/* Half-circle gauge specific styles */
+.gauge-container.half-circle {
+  padding-bottom: 20px;
+}
+
+.gauge-container.half-circle .gauge-svg {
+  overflow: visible;
+}
+
+.gauge-container.half-circle .gauge-value {
+  bottom: 25px;
+}
+
+/* Pressure Compact gauge specific styles */
+.gauge-container.pressure-compact {
+  padding: 0.5rem;
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 120px;
+  max-height: 120px;
+}
+
+.gauge-container.pressure-compact .gauge-label,
+.gauge-container.pressure-compact .gauge-value,
+.gauge-container.pressure-compact .gauge-mode-badge,
+.gauge-container.pressure-compact .gauge-mode-status {
+  display: none; /* All integrated into SVG */
+}
+
+.gauge-svg.pressure-compact {
+  overflow: visible;
+}
+
+.gauge-svg.pressure-compact .mode-indicator-compact {
+  animation: pulse-mode-compact 2s ease-in-out infinite;
+}
+
+/* Pressure Mini gauge (160×80px) */
+.gauge-container.pressure-mini {
+  padding: 0.35rem;
+  min-width: 160px;
+  max-width: 160px;
+  min-height: 80px;
+  max-height: 80px;
+}
+
+.gauge-container.pressure-mini .gauge-label,
+.gauge-container.pressure-mini .gauge-value,
+.gauge-container.pressure-mini .gauge-mode-badge,
+.gauge-container.pressure-mini .gauge-mode-status {
+  display: none;
+}
+
+.gauge-svg.pressure-mini {
+  overflow: visible;
+}
+
+/* Pressure Micro gauge (120×60px) */
+.gauge-container.pressure-micro {
+  padding: 0.25rem;
+  min-width: 120px;
+  max-width: 120px;
+  min-height: 60px;
+  max-height: 60px;
+}
+
+.gauge-container.pressure-micro .gauge-label,
+.gauge-container.pressure-micro .gauge-value,
+.gauge-container.pressure-micro .gauge-mode-badge,
+.gauge-container.pressure-micro .gauge-mode-status {
+  display: none;
+}
+
+.gauge-svg.pressure-micro {
+  overflow: visible;
+}
+
+@keyframes pulse-mode-compact {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* Donut type adjustments */
+.gauge-container.donut {
+  padding: 0.75rem;
+}
+
+.gauge-container.donut .gauge-value {
+  font-size: 1.1em;
+}
+
+/* Linear type adjustments */
+.gauge-container.linear {
+  padding: 0.75rem;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.gauge-container.linear.vertical {
+  flex-direction: column;
+}
+
+.gauge-container.linear .gauge-label {
+  position: relative;
+  transform: none;
+  top: auto;
+  left: auto;
+  flex-shrink: 0;
+}
+
+.gauge-container.linear .gauge-value {
+  position: relative;
+  transform: none;
+  top: auto;
+  left: auto;
+  flex-shrink: 0;
+  flex-direction: row;
+  gap: 0.25rem;
+}
+
+.gauge-container.linear.vertical .gauge-value {
+  flex-direction: column;
+  gap: 0;
+}
+
+.gauge-container.linear .value-number {
+  font-size: 1.2rem;
+}
+
+.gauge-container.linear .value-unit {
+  font-size: 0.8rem;
+}
+
+/* Label at bottom for compact/mini */
+.gauge-label-bottom {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-textSecondary);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.gauge-container.mini .gauge-label-bottom {
+  font-size: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+.gauge-container.clickable {
+  cursor: pointer;
+}
+
+.gauge-container.clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--color-shadow);
+  border-color: var(--color-primary);
+}
+
+.gauge-label {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: center;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.gauge-svg {
+  display: block;
+}
+
+.gauge-background {
+  opacity: 0.2;
+}
+
+.gauge-zone {
+  transition: opacity 0.3s ease;
+}
+
+.gauge-progress {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.gauge-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 5;
+}
+
+.gauge-container.semi-circular .gauge-value {
+  top: 60%;
+}
+
+.value-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.value-unit {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-textSecondary);
+  margin-top: 0.25rem;
+}
+
+/* Alert indicators */
+.gauge-alert {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+  animation: pulse 2s infinite;
+  z-index: 15;
+}
+
+.gauge-alert.warning {
+  background: var(--color-warning);
+  box-shadow: 0 0 8px var(--color-warning);
+}
+
+.gauge-alert.critical {
+  background: var(--color-danger);
+  box-shadow: 0 0 8px var(--color-danger);
+  animation: pulse-critical 1s infinite;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulse-critical {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulse-intake {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes pulse-exhaust {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gauge-container {
+    padding: 0.75rem;
+  }
+
+  .gauge-label {
+    font-size: 0.8rem;
+  }
+
+  .value-number {
+    font-size: 1.5rem;
+  }
+
+  .value-unit {
+    font-size: 0.8rem;
+  }
+}
+
+/* Theme-specific styles */
+[data-theme="darkNight"] .gauge-container {
+  background: #1e1e1e;
+  border-color: #495057;
+}
+
+[data-theme="darkNight"] .gauge-background {
+  opacity: 0.3;
+}
+
+[data-theme="hmiFuture"] .gauge-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="hmiFuture"] .gauge-progress {
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+[data-theme="hmiClassic"] .gauge-container {
+  border-radius: 0;
+  border-width: 2px;
+}
+
+[data-theme="hmiClassic"] .gauge-progress {
+  filter: none;
+}
+
+/* Accessibility */
+.gauge-container:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .gauge-container {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .gauge-alert {
+    animation: none;
+  }
+}

@@ -21,6 +21,8 @@ The Gauges widget provides intuitive visual representation of real-time measurem
 - [High Level Design (HLD)](HLD.md) - Architecture and design overview
 - [Detailed Design (DD)](DD.md) - Props, state, events, and implementation details
 - [Example Code](example-code.md) - Usage examples and integration patterns
+- [User Stories](user-stories.md) - Complete user stories with acceptance criteria and estimates
+- [Use Cases & Diagrams](use-cases.md) - Detailed use case scenarios and interaction flows
 
 ## Quick Example
 

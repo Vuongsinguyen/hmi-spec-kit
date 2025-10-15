@@ -36,4 +36,45 @@ This document contains all use cases for the HMI system, managed by Business Ana
 - **Priority:** High
 - **Status:** Approved
 
+---
+
+## Gauges Widget Use Cases
+
+> **Note:** Comprehensive use cases for Gauges widget are documented in [widgets/Gauges/use-cases.md](widgets/Gauges/use-cases.md)
+
+### UC-G01: View Real-time Gauge Values
+- **Actor:** Operator
+- **Description:** Operator views current process parameter values on visual gauges
+- **Priority:** High
+- **Status:** Approved
+- **Details:** See [Gauges Use Cases](widgets/Gauges/use-cases.md#uc-g01-view-real-time-gauge-values)
+
+### UC-G02: Monitor Multiple Parameters
+- **Actor:** Operator
+- **Description:** Monitor multiple process parameters simultaneously on dashboard
+- **Priority:** High
+- **Status:** Approved
+- **Details:** See [Gauges Use Cases](widgets/Gauges/use-cases.md#uc-g02-monitor-multiple-parameters)
+
+### UC-G03: Receive Visual Threshold Alerts
+- **Actor:** Operator
+- **Description:** Receive visual feedback when values exceed thresholds
+- **Priority:** High
+- **Status:** Approved
+- **Details:** See [Gauges Use Cases](widgets/Gauges/use-cases.md#uc-g03-receive-visual-threshold-alerts)
+
+### UC-G04: View Gauge Details
+- **Actor:** Operator, Process Engineer
+- **Description:** View detailed information and historical trends
+- **Priority:** Medium
+- **Status:** Approved
+- **Details:** See [Gauges Use Cases](widgets/Gauges/use-cases.md#uc-g04-view-gauge-details)
+
+### UC-G05: Configure Gauge Thresholds
+- **Actor:** Maintenance Engineer, System Administrator
+- **Description:** Configure warning and critical threshold values
+- **Priority:** Medium
+- **Status:** Approved
+- **Details:** See [Gauges Use Cases](widgets/Gauges/use-cases.md#uc-g05-configure-gauge-thresholds)
+
 [Add more use cases here...]
